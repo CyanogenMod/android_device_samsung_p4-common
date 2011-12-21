@@ -37,7 +37,7 @@ BOARD_PAGE_SIZE := 2048
 
 TARGET_NO_RADIOIMAGE := true
 TARGET_BOARD_PLATFORM := tegra
-TARGET_BOARD_BOOTLOADER_NAME := p3
+TARGET_BOOTLOADER_BOARD_NAME := p3
 #TARGET_BOARD_INFO_FILE := device/samsung/p4-common/board-info.txt
 
 BOARD_EGL_CFG := device/samsung/p4-common/egl.cfg
