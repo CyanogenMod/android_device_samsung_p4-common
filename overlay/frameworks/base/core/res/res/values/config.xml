@@ -170,4 +170,5 @@
         <item>"7,1"</item>
     </string-array>
 
+    <bool name="config_forceDisableHardwareKeyboard">true</bool>
 </resources>
