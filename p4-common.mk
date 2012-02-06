@@ -60,7 +60,7 @@ PRODUCT_COPY_FILES += \
      $(LOCAL_PATH)/lpm/media/Disconnected.qmg:system/media/Disconnected.qmg
 
 PRODUCT_PROPERTY_OVERRIDES := \
-    wifi.interface=wlan0 \
+    wifi.interface=eth0 \
     wifi.supplicant_scan_interval=15
 
 PRODUCT_PACKAGES += \
