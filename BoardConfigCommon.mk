@@ -96,3 +96,6 @@ BOARD_CHARGING_MODE_BOOTING_LPM := "/sys/class/power_supply/battery/charging_mod
 
 # Don't dequeue current buffer
 BOARD_NO_ALLOW_DEQUEUE_CURRENT_BUFFER := true
+
+# Custom graphics for recovery
+BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/p4-common/recovery/graphics.c
