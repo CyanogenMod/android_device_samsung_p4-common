@@ -63,6 +63,10 @@ PRODUCT_PROPERTY_OVERRIDES := \
     wifi.interface=eth0 \
     wifi.supplicant_scan_interval=15
 
+BOARD_WLAN_DEVICE_REV := bcm4330_b1
+
+$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
+
 PRODUCT_PACKAGES += \
         libinvensense_mpl
 
