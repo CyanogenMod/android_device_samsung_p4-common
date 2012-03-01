@@ -79,7 +79,7 @@ BOARD_WLAN_DEVICE := bcmdhd
 WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/bcmdhd.ko"
 WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/bcmdhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA     := "/system/etc/wifi/bcm4330_sta.bin"
-WIFI_DRIVER_FW_PATH_AP      := "/system/etc/wifi/bcm4330_aps.bin"
+WIFI_DRIVER_FW_PATH_AP      := "/system/etc/wifi/bcm4330_apsta.bin"
 WIFI_DRIVER_MODULE_NAME     := "bcmdhd"
 WIFI_DRIVER_MODULE_ARG      := "iface_name=eth0 firmware_path=/system/etc/wifi/bcm4330_sta.bin nvram_path=/system/etc/wifi/nvram_net.txt"
 
