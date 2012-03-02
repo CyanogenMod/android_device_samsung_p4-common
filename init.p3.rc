@@ -251,6 +251,9 @@ on boot
     # For P3
     chown root camera /sys/class/sec/sec_imx073/camerafw
 
+# Change permissions on cameraflash so that we can use it with Torch
+    chmod 0666 /sys/devices/virtual/sec/sec_s5k5ccgx/cameraflash
+
 # Touchscreen Config-UI interface
    chmod 666 /sys/devices/platform/tegra-i2c.0/i2c-0/0-005a/debug_enable
    chmod 666 /sys/devices/platform/tegra-i2c.0/i2c-0/0-005a/pause_driver

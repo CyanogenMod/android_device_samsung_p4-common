@@ -77,6 +77,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
         libinvensense_mpl
 
+# Torch
+PRODUCT_PACKAGES += \
+        Torch
+
 # Audio
 PRODUCT_PACKAGES += \
         audio.a2dp.default \
