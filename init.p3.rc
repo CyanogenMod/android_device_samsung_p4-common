@@ -260,7 +260,7 @@ service drm /system/bin/drmserver
     user drm
     group system root inet sdcard_rw
 
-service wpa_supplicant /system/bin/wpa_supplicant -Dwext -ieth0 \
+service wpa_supplicant /system/bin/wpa_supplicant -Dnl80211 -ieth0 \
         -c/data/misc/wifi/wpa_supplicant.conf -e/data/misc/wifi/entropy.bin
     class main
     socket wpa_eth0 dgram 0660 wifi wifi
@@ -303,7 +303,6 @@ service gpsd /system/bin/gpsd -c /system/etc/gps.xml
     user gps
     group system inet
     
-
 # create virtual SD card at /mnt/sdcard, based on the /data/media directory
 # daemon will drop to user/group system/media_rw after initializing
 # underlying files in /data/media wil be created with user and group media_rw (1023)
