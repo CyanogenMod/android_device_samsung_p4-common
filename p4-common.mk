@@ -24,6 +24,8 @@ DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/overlay
 #PRODUCT_AAPT_PREF_CONFIG := xlarge
 #PRODUCT_AAPT_PREF_CONFIG := 
 
+TARGET_BOOTANIMATION_NAME := horizontal-1280x800
+
 PRODUCT_COPY_FILES := \
     $(LOCAL_PATH)/init.p3.rc:root/init.p3.rc \
     $(LOCAL_PATH)/ueventd.p3.rc:root/ueventd.p3.rc \
