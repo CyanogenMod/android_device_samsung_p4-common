@@ -28,7 +28,7 @@ on post-fs
     # once everything is setup, no need to modify /
     mount rootfs rootfs / ro remount
 
-on boot
+on charger
 # backlight
     chown system system /sys/class/backlight/pwm-backlight/brightness
 
