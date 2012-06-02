@@ -20,14 +20,6 @@ loglevel 3
     mkdir /config 0500 root root
 
 
-on fs
-    # Mount /system rw first to give the filesystem a chance to save a checkpoint
-    mount ext4 /dev/block/mmcblk0p4 /system wait ro
-
-on post-fs
-    # once everything is setup, no need to modify /
-    mount rootfs rootfs / ro remount
-
 on boot
 # backlight
     chown system system /sys/class/backlight/pwm-backlight/brightness
@@ -43,20 +35,12 @@ service ueventd /sbin/ueventd
     class core
     critical
 
-service console /system/bin/sh
-    class core
-    console
-    disabled
-    user shell
-    group log
-
 on property:ro.debuggable=1
     start console
 
-#service recovery /sbin/recovery
-
-#service adbd /sbin/adbd recovery
-#    disabled
+service adbd /sbin/adbd recovery
+    class core
+    disabled
 
 on property:persist.service.adb.enable=1
     start adbd
@@ -64,11 +48,10 @@ on property:persist.service.adb.enable=1
 on property:persist.service.adb.enable=0
     stop adbd
 
-service playlpm /system/bin/playlpm
-    class main
+service charger /charger
+    class charger
     user root
 
-service lpmkey /system/bin/charging_mode
-    class main
-    user root
+on charger
+    class_start charger
 

@@ -94,6 +94,7 @@ BOARD_USE_SKIA_LCDTEXT := true
 
 # Charging Mode (LPM)
 BOARD_CHARGING_MODE_BOOTING_LPM := "/sys/class/power_supply/battery/charging_mode_booting"
+BOARD_BATTERY_DEVICE_NAME := "battery"
 
 # Don't dequeue current buffer
 BOARD_NO_ALLOW_DEQUEUE_CURRENT_BUFFER := true
