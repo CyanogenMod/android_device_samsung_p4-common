@@ -260,6 +260,15 @@ service drm /system/bin/drmserver
     user drm
     group system root inet sdcard_rw
 
+service p2p_supplicant /system/bin/wpa_supplicant \
+        -ieth0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf -N \
+        -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf \
+	-e/data/misc/wifi/entropy.bin
+    class main
+    socket wpa_eth0 dgram 660 wifi wifi
+    disabled
+    oneshot
+
 service wpa_supplicant /system/bin/wpa_supplicant -Dnl80211 -ieth0 \
         -c/data/misc/wifi/wpa_supplicant.conf -e/data/misc/wifi/entropy.bin
     class main
@@ -267,7 +276,7 @@ service wpa_supplicant /system/bin/wpa_supplicant -Dnl80211 -ieth0 \
     disabled
     oneshot
 
-service dhcpcd_eth0 /system/bin/dhcpcd -ABKL
+service dhcpcd_eth0 /system/bin/dhcpcd -aABKL
     class main
     disabled
     oneshot
