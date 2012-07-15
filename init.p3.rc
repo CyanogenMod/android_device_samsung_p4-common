@@ -4,10 +4,12 @@ on early-init
     mount debugfs debugfs /sys/kernel/debug
     write /sys/class/firmware/timeout 5
 
-    export EXTERNAL_STORAGE /mnt/sdcard
-    mkdir /mnt/sdcard 0000 system system
+    export EXTERNAL_STORAGE /storage/sdcard0
+    mkdir /storage 0050 system sdcard_r
+    mkdir /storage/sdcard0 0000 system system
     # for backwards compatibility
-    symlink /mnt/sdcard /sdcard
+    symlink /storage/sdcard0 /sdcard
+    symlink /storage/sdcard0 /mnt/sdcard
 
     # create directory for mounting usb drives
     mkdir /mnt/usbdrive 0666 system system
@@ -27,16 +29,14 @@ on init
     mkdir /dev/pipes 0771 shell shell        
 
 on fs
-    mount ext4 /dev/block/mmcblk0p4 /system wait ro
-    setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
-    mount ext4 /dev/block/mmcblk0p5 /cache wait noatime nosuid nodev
-    exec check_filesystem /dev/block/mmcblk0p8 ext4
-    mount ext4 /dev/block/mmcblk0p8 /data wait noatime nosuid nodev discard,noauto_da_alloc
-
-    # mound EFS partition
-    mount ext4 /dev/block/mmcblk0p1 /efs wait noatime nosuid nodev
+    mount_all /fstab.p3
+    setprop ro.crypto.fuse_sdcard true
 
 on post-fs-data
+    # we will remap this as /storage/sdcard0 with the sdcard fuse tool
+    mkdir /data/media 0770 media_rw media_rw
+    chown media_rw media_rw /data/media
+
     chown radio system /efs
     chmod 0771 /efs
     chmod 0775 /efs/bluetooth
@@ -88,10 +88,6 @@ on post-fs-data
     mkdir /data/log 0777 root root 
     chmod 0777 /data/log
     
-    # we will remap this as /mnt/sdcard with the sdcard fuse tool
-    mkdir /data/media 0775 media_rw media_rw
-    chown media_rw media_rw /data/media
-
     # Set indication (checked by vold) that we have finished this action
     setprop vold.post_fs_data_done 1
 
@@ -260,6 +256,12 @@ service drm /system/bin/drmserver
     user drm
     group system root inet sdcard_rw
 
+# create virtual SD card at /storage/sdcard0, based on the /data/media directory
+# daemon will drop to user/group system/media_rw after initializing
+# underlying files in /data/media wil be created with user and group media_rw (1023)
+service sdcard /system/bin/sdcard /data/media 1023 1023
+    class late_start
+
 service p2p_supplicant /system/bin/wpa_supplicant \
         -ieth0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf -N \
         -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf \
@@ -312,12 +314,6 @@ service gpsd /system/bin/gpsd -c /system/etc/gps.xml
     user gps
     group system inet
     
-# create virtual SD card at /mnt/sdcard, based on the /data/media directory
-# daemon will drop to user/group system/media_rw after initializing
-# underlying files in /data/media wil be created with user and group media_rw (1023)
-service sdcard /system/bin/sdcard /data/media 1023 1023
-    class late_start
-
 service hciattach /system/bin/brcm_patchram_plus --enable_hci --enable_lpm --no2bytes \
     --use_baudrate_for_download --baudrate 3000000 --patchram /etc/firmware/bcm4330B1.hcd /dev/ttyHS2
     class main

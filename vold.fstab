@@ -9,5 +9,4 @@
 ## part         - Partition # (1 based), or 'auto' for first usable partition.
 ## <sysfs_path> - List of sysfs paths to source devices
 ######################
-dev_mount sdcard /mnt/sdcard auto /devices/platform/sdhci-tegra.2/mmc_host/mmc1
 dev_mount usbdrive /mnt/usbdrive auto /devices/platform/tegra-ehci.0
