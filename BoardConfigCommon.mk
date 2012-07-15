@@ -17,6 +17,7 @@
 # This variable is set first, so it can be overridden
 # by BoardConfigVendor.mk
 BOARD_USES_GENERIC_AUDIO := false
+BOARD_USES_LIBSECRIL_STUB := true
 USE_CAMERA_STUB := false
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -45,8 +46,6 @@ BOARD_EGL_CFG := device/samsung/p4-common/egl.cfg
 #BOARD_USES_HGL := true
 #BOARD_USES_OVERLAY := true
 USE_OPENGL_RENDERER := true
-
-BOARD_USES_AUDIO_LEGACY := true
 
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 #TARGET_RECOVERY_UI_LIB := librecovery_ui_ventana

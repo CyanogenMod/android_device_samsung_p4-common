@@ -36,6 +36,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/vold.fstab:system/etc/vold.fstab \
     device/samsung/p4-common/fstab.p3:root/fstab.p3 \
     $(LOCAL_PATH)/media_profiles.xml:system/etc/media_profiles.xml \
+    $(LOCAL_PATH)/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/keylayout/sec_jack.kl:system/usr/keylayout/sec_jack.kl \
     $(LOCAL_PATH)/keylayout/sec_key.kl:system/usr/keylayout/sec_key.kl \
     $(LOCAL_PATH)/keylayout/sec_power_key.kl:system/usr/keylayout/sec_power_key.kl \
@@ -73,10 +74,16 @@ $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330
 PRODUCT_PACKAGES += \
         libinvensense_mpl
 
+# Audio
 PRODUCT_PACKAGES += \
         audio.a2dp.default \
-        libaudioutils \
-        audio.primary.p3
+        audio.usb.default \
+        audio.primary.p3 \
+        audio_policy.p3 
+
+PRODUCT_COPY_FILES += \
+        device/samsung/p4-common/libaudio/audio_policy.conf:system/etc/audio_policy.conf \
+        device/samsung/p4-common/libaudio/libasound.conf:system/etc/libasound.conf
         
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
