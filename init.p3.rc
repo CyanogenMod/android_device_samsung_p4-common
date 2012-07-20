@@ -29,9 +29,10 @@ on init
 on fs
     mount ext4 /dev/block/mmcblk0p4 /system wait ro
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
+    exec check_filesystem /dev/block/mmcblk0p5 ext4
     mount ext4 /dev/block/mmcblk0p5 /cache wait noatime nosuid nodev
     exec check_filesystem /dev/block/mmcblk0p8 ext4
-    mount ext4 /dev/block/mmcblk0p8 /data wait noatime nosuid nodev discard,noauto_da_alloc
+    mount ext4 /dev/block/mmcblk0p8 /data wait noatime nosuid nodev
 
     # mound EFS partition
     mount ext4 /dev/block/mmcblk0p1 /efs wait noatime nosuid nodev
