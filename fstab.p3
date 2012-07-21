@@ -4,7 +4,7 @@
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
 
 
-/dev/block/mmcblk0p4    /system             ext4      ro                                                    wait
-/dev/block/mmcblk0p1       /efs            ext4      ro                                                    wait
-/dev/block/mmcblk0p5     /cache              ext4      noatime,nosuid,nodev    wait,check
-/dev/block/mmcblk0p8  /data               ext4      noatime,nosuid,nodev    wait,check
+/dev/block/mmcblk0p4    /system    ext4    ro                      wait
+/dev/block/mmcblk0p1    /efs       ext4    noatime,nosuid,nodev    wait
+/dev/block/mmcblk0p5    /cache     ext4    noatime,nosuid,nodev    wait,check
+/dev/block/mmcblk0p8    /data      ext4    noatime,nosuid,nodev    wait,check
