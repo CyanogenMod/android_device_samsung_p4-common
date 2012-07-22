@@ -65,7 +65,8 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PROPERTY_OVERRIDES := \
     wifi.interface=eth0 \
-    wifi.supplicant_scan_interval=15
+    wifi.supplicant_scan_interval=15 \
+    ro.sf.lcd_density=160
 
 BOARD_WLAN_DEVICE_REV := bcm4330_b1
 
