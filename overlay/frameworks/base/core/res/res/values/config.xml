@@ -153,9 +153,9 @@
    <!-- Boolean indicating whether the wifi chipset has background scan support -->
    <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
 
-    <string name="config_networkLocationProviderPackageName">com.google.android.location.NetworkLocationProvider</string>
+    <string name="config_networkLocationProviderPackageName">com.google.android.location</string>
 
-   <string name="config_geocodeProviderPackageName">com.google.android.location.GeocodeProvider</string>
+   <string name="config_geocodeProviderPackageName">com.google.android.location</string>
 
     <bool name="config_forceDisableHardwareKeyboard">true</bool>
 
