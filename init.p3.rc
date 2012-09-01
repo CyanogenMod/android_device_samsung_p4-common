@@ -10,7 +10,7 @@ on early-init
     symlink /mnt/sdcard /sdcard
 
     # create directory for mounting usb drives
-    mkdir /mnt/usbdrive 0666 system system
+    mkdir /mnt/usbdrive 0664 system system
     symlink /mnt/usbdrive /usbdrive
 
     mkdir /efs 0771 system system
