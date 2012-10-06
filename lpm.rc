@@ -23,6 +23,8 @@ loglevel 3
 on fs
     # Mount /system rw first to give the filesystem a chance to save a checkpoint
     mount ext4 /dev/block/mmcblk0p4 /system wait ro
+	mount ext4 /dev/block/platform/sdhci-tegra.3/by-num/p8 /data wait noatime nosuid nodev noauto_da_alloc
+	mkdir /data/log 0775 system system
 
 on post-fs
     # once everything is setup, no need to modify /
@@ -68,7 +70,7 @@ service playlpm /system/bin/playlpm
     class main
     user root
 
-service lpmkey /system/bin/charging_mode
+service lpmkey /system/bin/lpmkey
     class main
     user root
 
