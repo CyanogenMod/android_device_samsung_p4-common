@@ -19,7 +19,7 @@
 
 <!-- The <device> element should contain one or more <storage> elements.
      Exactly one of these should have the attribute primary="true".
-     This storage will be the primary external storage and should have path="/mnt/sdcard".
+     This storage will be the primary external storage and should have path="/storage/sdcard".
      Each storage should have both a path and description attribute set.
      The following boolean attributes are optional:
 
@@ -39,7 +39,7 @@
              android:emulated="true"
              android:mtpReserve="100" />
 
-    <storage android:mountPoint="/mnt/usbdrive"
+    <storage android:mountPoint="/storage/usbdrive0"
              android:storageDescription="@string/storage_usb"
              android:primary="false"
              android:removable="true" />

@@ -28,13 +28,13 @@ TARGET_BOOTANIMATION_NAME := horizontal-1280x800
 
 PRODUCT_COPY_FILES := \
     $(LOCAL_PATH)/init.p3.rc:root/init.p3.rc \
+    $(LOCAL_PATH)/fstab.p3:root/fstab.p3 \
     $(LOCAL_PATH)/ueventd.p3.rc:root/ueventd.p3.rc \
     $(LOCAL_PATH)/lpm.rc:root/lpm.rc \
     $(LOCAL_PATH)/init.p3.usb.rc:root/init.p3.usb.rc
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/vold.fstab:system/etc/vold.fstab \
-    device/samsung/p4-common/fstab.p3:root/fstab.p3 \
     $(LOCAL_PATH)/media_profiles.xml:system/etc/media_profiles.xml \
     $(LOCAL_PATH)/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/keylayout/sec_jack.kl:system/usr/keylayout/sec_jack.kl \
@@ -45,13 +45,12 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/sec_touchscreen.idc:system/usr/idc/sec_touchscreen.idc
 
 PRODUCT_COPY_FILES += \
-     $(LOCAL_PATH)/gps.xml:system/etc/gps.xml \
      $(LOCAL_PATH)/gps.conf:system/etc/gps.conf
 
 # LPM (from TW-UX 3.2)
 PRODUCT_COPY_FILES += \
      $(LOCAL_PATH)/lpm/lib/libQmageDecoder.so:system/lib/libQmageDecoder.so \
-     $(LOCAL_PATH)/lpm/bin/charging_mode:system/bin/charging_mode \
+     $(LOCAL_PATH)/lpm/bin/lpmkey:system/bin/lpmkey \
      $(LOCAL_PATH)/lpm/bin/playlpm:system/bin/playlpm \
      $(LOCAL_PATH)/lpm/media/battery_charging_0.qmg:system/media/battery_charging_0.qmg \
      $(LOCAL_PATH)/lpm/media/battery_charging_20.qmg:system/media/battery_charging_20.qmg \
@@ -64,16 +63,16 @@ PRODUCT_COPY_FILES += \
      $(LOCAL_PATH)/lpm/media/Disconnected.qmg:system/media/Disconnected.qmg
 
 PRODUCT_PROPERTY_OVERRIDES := \
-    wifi.interface=eth0 \
+    wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=15 \
+    media.stagefright.cache-params=6144/-1/30 \
     ro.sf.lcd_density=160
 
-BOARD_WLAN_DEVICE_REV := bcm4330_b1
-
-$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
-
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
+    $(LOCAL_PATH)/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
+    $(LOCAL_PATH)/wifi/bcm4330_apsta.bin:system/etc/wifi/bcm4330_apsta.bin \
+    $(LOCAL_PATH)/wifi/bcm4330_p2p.bin:system/etc/wifi/bcm4330_p2p.bin \
+    $(LOCAL_PATH)/wifi/bcm4330_sta.bin:system/etc/wifi/bcm4330_sta.bin
 
 PRODUCT_PACKAGES += \
         libinvensense_mpl
@@ -81,19 +80,20 @@ PRODUCT_PACKAGES += \
 # Audio
 PRODUCT_PACKAGES += \
         audio.a2dp.default \
-        audio.usb.default \
-        audio.primary.p3 \
-        audio_policy.p3 
+	audio.usb.default \
+        libaudioutils \
+        libtinyalsa
 
 PRODUCT_COPY_FILES += \
-        device/samsung/p4-common/libaudio/audio_policy.conf:system/etc/audio_policy.conf \
-        device/samsung/p4-common/libaudio/libasound.conf:system/etc/libasound.conf
+        $(LOCAL_PATH)/audio/asound.conf:system/etc/asound.conf \
+        device/samsung/p4-common/audio/audio_policy.conf:system/etc/audio_policy.conf \
         
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.location.xml:system/etc/permissions/android.hardware.location.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
@@ -109,7 +109,15 @@ PRODUCT_COPY_FILES += \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/camera/nvcamera.conf:system/etc/nvcamera.conf
+    $(LOCAL_PATH)/camera/nvcamera.conf:system/etc/nvcamera.conf \
+    $(LOCAL_PATH)/camera/cameradata/back_camera_test_pattern.yuv:system/cameradata/back_camera_test_pattern.yuv \
+    $(LOCAL_PATH)/camera/cameradata/datapattern_420sp.yuv:system/cameradata/datapattern_420sp.yuv \
+    $(LOCAL_PATH)/camera/cameradata/datapattern_front_420sp.yuv:system/cameradata/datapattern_front_420sp.yuv \
+    $(LOCAL_PATH)/camera/cameradata/front_camera_test_pattern.yuv:system/cameradata/front_camera_test_pattern.yuv
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/hdmi/dectable1.dat:system/etc/hdmi/dectable1.dat \
+    $(LOCAL_PATH)/hdmi/dectable.dat:system/etc/hdmi/dectable.dat
 
 PRODUCT_CHARACTERISTICS := tablet,nosdcard
 
