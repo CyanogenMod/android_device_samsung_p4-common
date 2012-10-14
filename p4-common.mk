@@ -109,15 +109,7 @@ PRODUCT_COPY_FILES += \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/camera/nvcamera.conf:system/etc/nvcamera.conf \
-    $(LOCAL_PATH)/camera/cameradata/back_camera_test_pattern.yuv:system/cameradata/back_camera_test_pattern.yuv \
-    $(LOCAL_PATH)/camera/cameradata/datapattern_420sp.yuv:system/cameradata/datapattern_420sp.yuv \
-    $(LOCAL_PATH)/camera/cameradata/datapattern_front_420sp.yuv:system/cameradata/datapattern_front_420sp.yuv \
-    $(LOCAL_PATH)/camera/cameradata/front_camera_test_pattern.yuv:system/cameradata/front_camera_test_pattern.yuv
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/hdmi/dectable1.dat:system/etc/hdmi/dectable1.dat \
-    $(LOCAL_PATH)/hdmi/dectable.dat:system/etc/hdmi/dectable.dat
+    $(LOCAL_PATH)/camera/nvcamera.conf:system/etc/nvcamera.conf
 
 PRODUCT_CHARACTERISTICS := tablet,nosdcard
 
