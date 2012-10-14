@@ -61,6 +61,10 @@
 # Interactive
 /sys/devices/system/cpu/cpufreq interactive/above_hispeed_delay  0664  system  system
 /sys/devices/system/cpu/cpufreq interactive/boost  0664  system  system
+/sys/devices/system/cpu/cpufreq interactive/boost_factor  0664  system  system
+/sys/devices/system/cpu/cpufreq interactive/go_maxspeed_load  0664  system  system
 /sys/devices/system/cpu/cpufreq interactive/input_boost  0664  system  system
 /sys/devices/system/cpu/cpufreq interactive/io_is_busy  0664  system  system
+/sys/devices/system/cpu/cpufreq interactive/max_boost  0664  system  system
 /sys/devices/system/cpu/cpufreq interactive/min_sample_time  0664  system  system
+/sys/devices/system/cpu/cpufreq interactive/sustain_load  0664  system  system
