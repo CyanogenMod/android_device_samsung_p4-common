@@ -57,3 +57,6 @@ on property:ro.debuggable=1
 
 # Prefer tar
     setprop ro.cwm.prefer_tar true
+
+# Repeatable keys
+    setprop ro.cwm.enable_key_repeat true
