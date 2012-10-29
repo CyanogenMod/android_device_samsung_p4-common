@@ -384,11 +384,6 @@ on device-added-/sys/block/sda
 on device-removed-/sys/block/sda
     umount /storage/usbdrive0
 
-# serial keyboard daemon
-#service sec_keyboard /system/bin/sec_keyboard /dev/ttyS0
-#    class late_start
-#    group system
-
 # For 3g tabs
 service cpboot-daemon /sbin/cbd -d -o t -p 7
     class main
