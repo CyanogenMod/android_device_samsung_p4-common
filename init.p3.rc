@@ -228,6 +228,11 @@ on boot
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
     write /sys/module/cpuidle/parameters/lp2_in_idle 0
 
+# Interactive (initial) setup
+    write /sys/devices/system/cpu/cpufreq/interactive/boost_factor 2
+    write /sys/devices/system/cpu/cpufreq/interactive/input_boost 1
+    write /sys/devices/system/cpu/cpufreq/interactive/sustain_load 80
+
 # Enable KSM
      write /sys/kernel/mm/ksm/sleep_millisecs 1400
      write /sys/kernel/mm/ksm/pages_to_scan 200
