@@ -90,7 +90,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
         $(LOCAL_PATH)/audio/asound.conf:system/etc/asound.conf \
-        device/samsung/p4-common/audio/audio_policy.conf:system/etc/audio_policy.conf \
+        $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf
         
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
