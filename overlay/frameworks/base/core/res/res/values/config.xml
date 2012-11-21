@@ -105,10 +105,6 @@
     <!-- Boolean indicating whether the wifi chipset has p2p support -->
     <bool translatable="false" name="config_wifi_p2p_support">true</bool>
 
-    <string name="config_networkLocationProviderPackageName">com.google.android.location</string>
-
-   <string name="config_geocodeProviderPackageName">com.google.android.location</string>
-
     <bool name="config_forceDisableHardwareKeyboard">true</bool>
 
     <!-- True will enable the electron beam screen-off animation. -->
