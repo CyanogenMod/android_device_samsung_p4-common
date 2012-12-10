@@ -49,6 +49,8 @@
 #define PIXEL_SIZE   2
 #endif
 
+#define NUM_BUFFERS 2
+
 typedef struct {
     GGLSurface texture;
     unsigned cwidth;
@@ -59,9 +61,10 @@ typedef struct {
 static GRFont *gr_font = 0;
 static GGLContext *gr_context = 0;
 static GGLSurface gr_font_texture;
-static GGLSurface gr_framebuffer[2];
+static GGLSurface gr_framebuffer[NUM_BUFFERS];
 static GGLSurface gr_mem_surface;
 static unsigned gr_active_fb = 0;
+static unsigned double_buffering = 0;
 
 static int gr_fb_fd = -1;
 static int gr_vt_fd = -1;
@@ -144,6 +147,12 @@ static int get_framebuffer(GGLSurface *fb)
 
     fb++;
 
+    /* check if we can use double buffering */
+    if (vi.yres * fi.line_length * 2 > fi.smem_len)
+        return fd;
+
+    double_buffering = 1;
+
     fb->version = sizeof(*fb);
     fb->width = vi.xres;
     fb->height = vi.yres;
@@ -166,8 +175,8 @@ static void get_memory_surface(GGLSurface* ms) {
 
 static void set_active_framebuffer(unsigned n)
 {
-    if (n > 1) return;
-    vi.yres_virtual = vi.yres * PIXEL_SIZE;
+    if (n > 1 || !double_buffering) return;
+    vi.yres_virtual = vi.yres * NUM_BUFFERS;
     vi.yoffset = n * vi.yres;
     vi.bits_per_pixel = PIXEL_SIZE * 8;
     if (ioctl(gr_fb_fd, FBIOPUT_VSCREENINFO, &vi) < 0) {
@@ -180,7 +189,8 @@ void gr_flip(void)
     GGLContext *gl = gr_context;
 
     /* swap front and back buffers */
-    gr_active_fb = (gr_active_fb + 1) & 1;
+    if (double_buffering)
+        gr_active_fb = (gr_active_fb + 1) & 1;
 
     /* copy data from the in-memory surface to the buffer we're about
      * to make active. */
@@ -239,6 +249,25 @@ int gr_text(int x, int y, const char *s)
     return x;
 }
 
+void gr_texticon(int x, int y, gr_surface icon) {
+    if (gr_context == NULL || icon == NULL) {
+        return;
+    }
+    GGLContext* gl = gr_context;
+
+    gl->bindTexture(gl, (GGLSurface*) icon);
+    gl->texEnvi(gl, GGL_TEXTURE_ENV, GGL_TEXTURE_ENV_MODE, GGL_REPLACE);
+    gl->texGeni(gl, GGL_S, GGL_TEXTURE_GEN_MODE, GGL_ONE_TO_ONE);
+    gl->texGeni(gl, GGL_T, GGL_TEXTURE_GEN_MODE, GGL_ONE_TO_ONE);
+    gl->enable(gl, GGL_TEXTURE_2D);
+
+    int w = gr_get_width(icon);
+    int h = gr_get_height(icon);
+
+    gl->texCoord2i(gl, -x, -y);
+    gl->recti(gl, x, y, x+gr_get_width(icon), y+gr_get_height(icon));
+}
+
 void gr_fill(int x, int y, int w, int h)
 {
     GGLContext *gl = gr_context;
@@ -247,7 +276,7 @@ void gr_fill(int x, int y, int w, int h)
 }
 
 void gr_blit(gr_surface source, int sx, int sy, int w, int h, int dx, int dy) {
-    if (gr_context == NULL) {
+    if (gr_context == NULL || source == NULL) {
         return;
     }
     GGLContext *gl = gr_context;
