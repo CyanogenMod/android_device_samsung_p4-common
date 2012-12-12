@@ -47,6 +47,8 @@ TARGET_BOOTLOADER_BOARD_NAME := p3
 #TARGET_BOARD_INFO_FILE := device/samsung/p4-common/board-info.txt
 
 BOARD_EGL_NEEDS_LEGACY_FB := true
+MAX_EGL_CACHE_KEY_SIZE := 4096
+MAX_EGL_CACHE_SIZE := 2146304
 BOARD_EGL_CFG := device/samsung/p4-common/egl.cfg
 
 #BOARD_USES_HGL := true
