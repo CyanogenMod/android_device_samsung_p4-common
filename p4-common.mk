@@ -91,7 +91,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
         $(LOCAL_PATH)/audio/asound.conf:system/etc/asound.conf \
-        $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf
+        $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
+        $(LOCAL_PATH)/audio/nvaudio_conf.xml:system/etc/nvaudio_conf.xml
         
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
