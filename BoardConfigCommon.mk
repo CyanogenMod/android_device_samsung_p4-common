@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# Default value, if not overridden else where.
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/samsung/p4-common/bluetooth
+
 # This variable is set first, so it can be overridden
 # by BoardConfigVendor.mk
 BOARD_USES_GENERIC_AUDIO := false
@@ -43,14 +46,13 @@ TARGET_BOARD_PLATFORM := tegra
 TARGET_BOOTLOADER_BOARD_NAME := p3
 #TARGET_BOARD_INFO_FILE := device/samsung/p4-common/board-info.txt
 
+BOARD_EGL_NEEDS_LEGACY_FB := true
 BOARD_EGL_CFG := device/samsung/p4-common/egl.cfg
 
 #BOARD_USES_HGL := true
 #BOARD_USES_OVERLAY := true
 USE_OPENGL_RENDERER := true
 
-BOARD_USES_AUDIO_LEGACY := true
-BOARD_USE_SAMSUNG_SEPARATEDSTREAM := true
 COMMON_GLOBAL_CFLAGS += -DICS_AUDIO_BLOB
 
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
