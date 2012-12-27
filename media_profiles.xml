@@ -115,8 +115,8 @@
 
       <Audio codec="aac"
              bitRate="128000"
-             sampleRate="48000"
-             channels="2" />
+             sampleRate="44100"
+             channels="1" />
     </EncoderProfile>
 
     <EncoderProfile quality="qcif" fileFormat="3gp" duration="30">
@@ -141,8 +141,8 @@
 
       <Audio codec="aac"
              bitRate="128000"
-             sampleRate="48000"
-             channels="2" />
+             sampleRate="44100"
+             channels="1" />
     </EncoderProfile>
 
     <EncoderProfile quality="720p" fileFormat="mp4" duration="30">
@@ -154,8 +154,8 @@
 
       <Audio codec="aac"
              bitRate="128000"
-             sampleRate="48000"
-             channels="2" />
+             sampleRate="44100"
+             channels="1" />
     </EncoderProfile>
 
     <EncoderProfile quality="timelapselow" fileFormat="3gp" duration="30">
@@ -188,8 +188,8 @@
       -->
       <Audio codec="aac"
              bitRate="128000"
-             sampleRate="48000"
-             channels="2" />
+             sampleRate="44100"
+             channels="1" />
     </EncoderProfile>
 
     <EncoderProfile quality="timelapseqcif" fileFormat="3gp" duration="30">
@@ -222,8 +222,8 @@
       -->
       <Audio codec="aac"
              bitRate="128000"
-             sampleRate="48000"
-             channels="2" />
+             sampleRate="44100"
+             channels="1" />
     </EncoderProfile>
 
     <EncoderProfile quality="timelapse720p" fileFormat="mp4" duration="30">
@@ -239,8 +239,8 @@
       -->
       <Audio codec="aac"
              bitRate="128000"
-             sampleRate="48000"
-             channels="2" />
+             sampleRate="44100"
+             channels="1" />
     </EncoderProfile>
 
     <ImageEncoding quality="90" />
@@ -275,8 +275,8 @@
 
       <Audio codec="aac"
              bitRate="128000"
-             sampleRate="48000"
-             channels="2" />
+             sampleRate="44100"
+             channels="1" />
     </EncoderProfile>
 
     <EncoderProfile quality="qcif" fileFormat="3gp" duration="25">
@@ -301,8 +301,8 @@
 
       <Audio codec="aac"
              bitRate="128000"
-             sampleRate="48000"
-             channels="2" />
+             sampleRate="44100"
+             channels="1" />
     </EncoderProfile>
 
     <EncoderProfile quality="timelapselow" fileFormat="3gp" duration="25">
@@ -335,8 +335,8 @@
       -->
       <Audio codec="aac"
              bitRate="128000"
-             sampleRate="48000"
-             channels="2" />
+             sampleRate="44100"
+             channels="1" />
     </EncoderProfile>
 
     <EncoderProfile quality="timelapseqcif" fileFormat="3gp" duration="25">
@@ -369,8 +369,8 @@
       -->
       <Audio codec="aac"
              bitRate="128000"
-             sampleRate="48000"
-             channels="2" />
+             sampleRate="44100"
+             channels="1" />
     </EncoderProfile>
 
     <ImageEncoding quality="90" />
@@ -408,8 +408,8 @@
 
   <AudioEncoderCap name="aac" enabled="true"
       minBitRate="8192" maxBitRate="196000"
-      minSampleRate="8000" maxSampleRate="48000"
-      minChannels="1" maxChannels="2" />
+      minSampleRate="8000" maxSampleRate="44100"
+      minChannels="1" maxChannels="1" />
 
   <AudioEncoderCap name="amrwb" enabled="true"
       minBitRate="6600" maxBitRate="23050"
