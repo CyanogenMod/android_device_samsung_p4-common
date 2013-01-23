@@ -110,6 +110,8 @@ BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/p4-common/recovery/graphics.c
 
 # Preload bootanimation in to memory
 TARGET_BOOTANIMATION_PRELOAD := true
+TARGET_BOOTANIMATION_TEXTURE_CACHE := true
+TARGET_BOOTANIMATION_USE_RGB565 := true
 
 # Suppress EMMC WIPE
 BOARD_SUPPRESS_EMMC_WIPE := true
