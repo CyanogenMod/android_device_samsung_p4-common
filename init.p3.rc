@@ -286,9 +286,6 @@ on property:my.gps=vzw
     chown gps system /data/gps
     chmod 0771 /data/gps
 
-# Always start adbd on userdebug and eng builds
-    setprop sys.usb.config adb
-
 service p2p_supplicant /system/bin/wpa_supplicant \
         -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf -N \
         -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf \
