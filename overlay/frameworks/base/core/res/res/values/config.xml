@@ -116,4 +116,11 @@
     <!-- reference volume index for music stream to limit headphone volume and display warning -->
     <integer name="config_safe_media_volume_index">6</integer>
 
+    <!-- The attenuation in dB applied to the sound effects played
+         through AudioManager.playSoundEffect() when no volume is specified. -->
+    <integer name="config_soundEffectVolumeDb">-2</integer>
+
+    <!-- The attenuation in dB applied to the lock/unlock sounds. -->
+    <integer name="config_lockSoundVolumeDb">-2</integer>
+
 </resources>
