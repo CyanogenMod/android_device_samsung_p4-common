@@ -16,13 +16,8 @@
 
 DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/overlay
 
-# This device is xhdpi.  However the platform doesn't
-# currently contain all of the bitmaps at xhdpi density so
-# we do this little trick to fall back to the hdpi version
-# if the xhdpi doesn't exist.
-#PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xlarge sw600dp sw720dp
-#PRODUCT_AAPT_PREF_CONFIG := xlarge
-#PRODUCT_AAPT_PREF_CONFIG := 
+PRODUCT_AAPT_CONFIG := xlarge mdpi hdpi
+PRODUCT_AAPT_PREF_CONFIG := mdpi
 
 # Target arch
 TARGET_ARCH := arm
