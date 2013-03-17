@@ -44,6 +44,12 @@ on boot
 
     class_start default
 
+    # Prefer tar
+    setprop ro.cwm.prefer_tar true
+
+    # Repeatable keys
+    setprop ro.cwm.enable_key_repeat true
+
 service ueventd /sbin/ueventd
     critical
 
@@ -59,9 +65,3 @@ on property:service.adb.root=1
     write /sys/class/android_usb/android0/enable 0
     restart adbd
     write /sys/class/android_usb/android0/enable 1
-
-# Prefer tar
-    setprop ro.cwm.prefer_tar true
-
-# Repeatable keys
-    setprop ro.cwm.enable_key_repeat true
