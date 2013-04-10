@@ -62,7 +62,8 @@ PRODUCT_PROPERTY_OVERRIDES := \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=15 \
     media.stagefright.cache-params=6144/-1/30 \
-    ro.sf.lcd_density=160
+    ro.sf.lcd_density=160 \
+    debug.hwui.render_dirty_regions=false
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
