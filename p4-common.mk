@@ -123,7 +123,8 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 PRODUCT_PACKAGES += \
     librs_jni \
     com.android.future.usb.accessory \
-    power.p3
+    power.p3 \
+    WiFiDirectDemo
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
