@@ -129,7 +129,8 @@ PRODUCT_PACKAGES += \
     librs_jni \
     com.android.future.usb.accessory \
     power.p3 \
-    libnetcmdiface
+    libnetcmdiface \
+    WiFiDirectDemo
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
