@@ -74,9 +74,9 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-    $(LOCAL_PATH)/wifi/bcm4330_apsta.bin:system/etc/wifi/bcm4330_apsta.bin \
-    $(LOCAL_PATH)/wifi/bcm4330_p2p.bin:system/etc/wifi/bcm4330_p2p.bin \
-    $(LOCAL_PATH)/wifi/bcm4330_sta.bin:system/etc/wifi/bcm4330_sta.bin
+    $(LOCAL_PATH)/wifi/bcmdhd_apsta.bin:system/etc/wifi/bcmdhd_apsta.bin \
+    $(LOCAL_PATH)/wifi/bcmdhd_p2p.bin:system/etc/wifi/bcmdhd_p2p.bin \
+    $(LOCAL_PATH)/wifi/bcmdhd_sta.bin:system/etc/wifi/bcmdhd_sta.bin
 
 PRODUCT_PACKAGES += \
         libinvensense_mpl
