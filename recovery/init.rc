@@ -50,6 +50,9 @@ on boot
     # Repeatable keys
     setprop ro.cwm.enable_key_repeat true
 
+    # Download mode
+    setprop ro.bootloader.mode download
+
 service ueventd /sbin/ueventd
     critical
 
